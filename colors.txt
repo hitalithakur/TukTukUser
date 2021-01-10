@@ -1,0 +1,14 @@
+COLORS
+
+#162630 grey1
+#303e48 grey2
+
+#e89b46 yellow1
+#ffb04c yellow2
+#ffdb6c yellow3
+
+#f44a46 red1
+#fa6657 red2
+
+#d1d1d1 grey3
+#e6e6e6 grey4
