@@ -14,6 +14,7 @@ import 'package:my_flutter_project/AllScreens/loginScreen.dart';
 import 'package:my_flutter_project/AllScreens/ratingScreen.dart';
 import 'package:my_flutter_project/AllScreens/registerScreen.dart';
 import 'package:my_flutter_project/AllScreens/searchScreen.dart';
+import 'package:my_flutter_project/AllScreens/settings_page.dart';
 import 'package:my_flutter_project/AllWidgets/Divider.dart';
 import 'package:my_flutter_project/AllWidgets/collectFareDialog.dart';
 import 'package:my_flutter_project/AllWidgets/noDriverAvailabeDialog.dart';
@@ -396,17 +397,24 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
               SizedBox(height: 12.0,),
 
               //Drawer Body Controllers
-              ListTile(
-                leading: Icon(Icons.history),
-                title: Text("Ride History", style: TextStyle(fontSize: 15.0),),
-              ),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text("Visit Profile", style: TextStyle(fontSize: 15.0),),
-              ),
-              ListTile(
-                leading: Icon(Icons.info),
-                title: Text("About", style: TextStyle(fontSize: 15.0),),
+              // ListTile(
+              //   leading: Icon(Icons.history),
+              //   title: Text("Ride History", style: TextStyle(fontSize: 15.0),),
+              // ),
+              // ListTile(
+              //   leading: Icon(Icons.person),
+              //   title: Text("Visit Profile", style: TextStyle(fontSize: 15.0),),
+              // ),
+
+              GestureDetector(
+                child: ListTile(
+                  onTap: ()
+                  {
+                    Navigator.pushNamedAndRemoveUntil(context, SettingsPage.idScreen, (route) => false);
+                  },
+                  leading: Icon(Icons.info),
+                  title: Text("Language", style: TextStyle(fontSize: 15.0),),
+                ),
               ),
 
 
@@ -425,6 +433,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
           ),
         ),
       ),
+
       body: Stack(
         children: [
           //Google Map View

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter_project/AllScreens/mainscreen.dart';
 import 'package:my_flutter_project/AllScreens/registerScreen.dart';
 import 'package:my_flutter_project/AllWidgets/progressDialog.dart';
+import 'package:my_flutter_project/localization/language_constants.dart';
 import 'package:my_flutter_project/main.dart';
 
 
