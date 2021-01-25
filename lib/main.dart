@@ -65,7 +65,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Tuk-Tuk App',
         theme: ThemeData(
           //fontFamily: 'Brand-Regular',
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.blueGrey,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         //darkTheme: ThemeData.dark(),
@@ -73,7 +73,8 @@ class _MyAppState extends State<MyApp> {
         locale: _locale,
         supportedLocales: [
           Locale("en", "US"),
-          Locale("hi", "IN")
+          Locale("hi", "IN"),
+          Locale("mr", "IN")
         ],
         localizationsDelegates: [
           DemoLocalization.delegate,

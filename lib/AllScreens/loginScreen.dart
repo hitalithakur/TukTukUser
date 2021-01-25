@@ -5,21 +5,73 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter_project/AllScreens/mainscreen.dart';
 import 'package:my_flutter_project/AllScreens/registerScreen.dart';
 import 'package:my_flutter_project/AllWidgets/progressDialog.dart';
+import 'package:my_flutter_project/classes/language.dart';
 import 'package:my_flutter_project/localization/language_constants.dart';
 import 'package:my_flutter_project/main.dart';
 
 
-class LoginScreen extends StatelessWidget
+class LoginScreen extends StatefulWidget
 {
   static const String idScreen = "login";
+  LoginScreen({Key key}) : super(key: key);
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+  void _changeLanguage(Language language) async {
+    Locale _locale = await setLocale(language.languageCode);
+    MyApp.setLocale(context, _locale);
+  }
 
   TextEditingController emailTextEditingController = TextEditingController();
-  TextEditingController passwordTextEditingController = TextEditingController();
 
+  TextEditingController passwordTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(getTranslated(context, 'login_screen'),),
+
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DropdownButton<Language>(
+              underline: SizedBox(),
+              icon: Icon(
+                Icons.language,
+                color: Colors.white,
+              ),
+              onChanged: (Language language) {
+                _changeLanguage(language);
+              },
+              items: Language.languageList()
+                  .map<DropdownMenuItem<Language>>(
+                    (e) => DropdownMenuItem<Language>(
+                  value: e,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Text(
+                        e.flag,
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Text(e.name)
+                    ],
+                  ),
+                ),
+              )
+                  .toList(),
+            ),
+          ),
+        ],
+
+      ),
+
+
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
