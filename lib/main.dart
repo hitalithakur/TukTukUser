@@ -10,6 +10,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_flutter_project/AllScreens/loginScreen.dart';
 import 'package:my_flutter_project/AllScreens/mainscreen.dart';
 import 'package:my_flutter_project/AllScreens/registerScreen.dart';
+import 'package:my_flutter_project/AllScreens/settings_page.dart';
 import 'package:my_flutter_project/DataHandler/appData.dart';
 import 'package:my_flutter_project/localization/demo_localization.dart';
 import 'package:my_flutter_project/localization/language_constants.dart';
@@ -98,6 +99,7 @@ class _MyAppState extends State<MyApp> {
           RegisterScreen.idScreen: (context) => RegisterScreen(),
           LoginScreen.idScreen: (context) => LoginScreen(),
           MainScreen.idScreen: (context) => MainScreen(),
+          //SettingsPage.idScreen: (context) => SettingsPage(),
         },
         debugShowCheckedModeBanner: false,
       ),

@@ -5,7 +5,7 @@ import 'package:my_flutter_project/main.dart';
 
 class SettingsPage extends StatefulWidget
 {
-  static const String idScreen = "language";
+  //static const String idScreen = "language";
   SettingsPage({Key key}) : super(key: key);
 
   @override

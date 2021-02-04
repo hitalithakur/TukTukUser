@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 //import 'package:flutter/cupertino.dart';
@@ -20,7 +22,6 @@ class LoginScreen extends StatefulWidget
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final GlobalKey<FormState> _key = GlobalKey<FormState>();
   void _changeLanguage(Language language) async {
     Locale _locale = await setLocale(language.languageCode);
     MyApp.setLocale(context, _locale);
@@ -34,13 +35,18 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(getTranslated(context, 'login_screen'),),
+        centerTitle: false,
+        title: Text(
+          // "Log-in Screen"
+          getTranslated(context, 'login_screen'),
+        ),
 
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: DropdownButton<Language>(
               underline: SizedBox(),
+              hint: Text(getTranslated(context, 'language'), style: TextStyle(color: Colors.white),), //"Language
               icon: Icon(
                 Icons.language,
                 color: Colors.white,
@@ -50,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               items: Language.languageList()
                   .map<DropdownMenuItem<Language>>(
-                    (e) => DropdownMenuItem<Language>(
+                     (e) => DropdownMenuItem<Language>(
                   value: e,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -88,7 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
               SizedBox(height: 1.0,),
               Text(
-                "Login as a User",
+                //"Login as a User",
+                getTranslated(context, 'login_as_a_user'),
                 style: TextStyle(fontSize: 24.0, fontFamily: "Brand Bold"),
                 textAlign: TextAlign.center,
               ),
@@ -103,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: emailTextEditingController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        labelText: "Email",
+                        labelText: getTranslated(context, 'email'), //"Email",
                         labelStyle: TextStyle(
                           fontSize: 14.0,
                         ),
@@ -120,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: passwordTextEditingController,
                       obscureText: true,
                       decoration: InputDecoration(
-                        labelText: "Password",
+                        labelText: getTranslated(context, 'password'),//"Password",
                         labelStyle: TextStyle(
                           fontSize: 14.0,
                         ),
@@ -134,14 +141,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     SizedBox(height: 25.0,),
                     RaisedButton(
-                      color: Colors.yellow,
+                      color: Colors.blueGrey,
                       textColor: Colors.black,
                       child:  Container(
                         height: 50.0,
+                        width: 150.0,
                         child: Center(
                           child: Text(
-                            "Login",
-                            style: TextStyle(fontSize: 18.0, fontFamily: "Brand Bold"),
+                            //"Login",
+                            getTranslated(context, 'login'),
+                            style: TextStyle(fontSize: 20.0, fontFamily: "Brand Bold"),
                           ),
                         ),
                       ),
@@ -175,8 +184,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.pushNamedAndRemoveUntil(context, RegisterScreen.idScreen, (route) => false);
                 },
                 child: Text(
-                  "Don't have an account? Register here",
-
+                  //"Don't have an account? Register here",
+                  getTranslated(context, 'dont_have_an_account?_register_here'),
                 ),
               ),
             ],

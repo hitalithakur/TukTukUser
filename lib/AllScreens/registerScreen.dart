@@ -5,13 +5,20 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_flutter_project/AllScreens/loginScreen.dart';
 import 'package:my_flutter_project/AllScreens/mainscreen.dart';
 import 'package:my_flutter_project/AllWidgets/progressDialog.dart';
+import 'package:my_flutter_project/localization/language_constants.dart';
 import 'package:my_flutter_project/main.dart';
 
 
-class RegisterScreen extends StatelessWidget
+class RegisterScreen extends StatefulWidget
 {
   static const String idScreen = "register";
+  RegisterScreen({Key key}) : super(key: key);
 
+  @override
+  _RegisterScreenState createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController nameTextEditingController = TextEditingController();
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController phoneTextEditingController = TextEditingController();
@@ -20,6 +27,15 @@ class RegisterScreen extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text(
+          // "Log-in Screen"
+          getTranslated(context, 'registration_screen'),
+        ),
+      ),
+
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
@@ -36,7 +52,8 @@ class RegisterScreen extends StatelessWidget
 
               SizedBox(height: 1.0,),
               Text(
-                "Register as a User",
+                //"Register as a User",
+                getTranslated(context, 'register_as_a_user'),
                 style: TextStyle(fontSize: 24.0, fontFamily: "Brand Bold"),
                 textAlign: TextAlign.center,
               ),
@@ -51,7 +68,7 @@ class RegisterScreen extends StatelessWidget
                       controller: nameTextEditingController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
-                        labelText: "Name",
+                        labelText: getTranslated(context, 'register_name'), //"Name",
                         labelStyle: TextStyle(
                           fontSize: 14.0,
                         ),
@@ -68,7 +85,7 @@ class RegisterScreen extends StatelessWidget
                       controller: emailTextEditingController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        labelText: "Email",
+                        labelText: getTranslated(context, 'register_email'), //"Email",
                         labelStyle: TextStyle(
                           fontSize: 14.0,
                         ),
@@ -85,7 +102,7 @@ class RegisterScreen extends StatelessWidget
                       controller: phoneTextEditingController,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                        labelText: "Phone",
+                        labelText: getTranslated(context, 'register_phone'), //"Phone",
                         labelStyle: TextStyle(
                           fontSize: 14.0,
                         ),
@@ -102,7 +119,7 @@ class RegisterScreen extends StatelessWidget
                       controller: passwordTextEditingController,
                       obscureText: true,
                       decoration: InputDecoration(
-                        labelText: "Password",
+                        labelText: getTranslated(context, 'register_password'), //"Password",
                         labelStyle: TextStyle(
                           fontSize: 14.0,
                         ),
@@ -116,14 +133,16 @@ class RegisterScreen extends StatelessWidget
 
                     SizedBox(height: 25.0,),
                     RaisedButton(
-                        color: Colors.yellow,
+                        color: Colors.blueGrey,
                         textColor: Colors.black,
                         child:  Container(
                           height: 50.0,
+                          width: 150.0,
                           child: Center(
                             child: Text(
-                              "Create Account",
-                              style: TextStyle(fontSize: 18.0, fontFamily: "Brand Bold"),
+                              //"Create Account",
+                              getTranslated(context, 'create_account'),
+                              style: TextStyle(fontSize: 20.0, fontFamily: "Brand Bold"),
                             ),
                           ),
                         ),
@@ -165,8 +184,8 @@ class RegisterScreen extends StatelessWidget
                   Navigator.pushNamedAndRemoveUntil(context, LoginScreen.idScreen, (route) => false);
                 },
                 child: Text(
-                  "Already have an account? Login here",
-
+                  //"Already have an account? Login here",
+                  getTranslated(context, 'already_have_an_account_login_here'),
                 ),
               ),
             ],

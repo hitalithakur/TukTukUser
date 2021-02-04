@@ -6,9 +6,13 @@ import 'package:my_flutter_project/DataHandler/appData.dart';
 import 'package:my_flutter_project/Models/address.dart';
 import 'package:my_flutter_project/Models/placePredictions.dart';
 import 'package:my_flutter_project/congifMaps.dart';
+import 'package:my_flutter_project/localization/language_constants.dart';
 import 'package:provider/provider.dart';
 
-class SearchScreen extends StatefulWidget {
+class SearchScreen extends StatefulWidget
+{
+  SearchScreen({Key key}) : super(key: key);
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -27,6 +31,14 @@ class _SearchScreenState extends State<SearchScreen>
     String placeAddress = Provider.of<AppData>(context).pickUpLocation.placeName ?? "";
     pickUpTextEditingController.text = placeAddress;
     return Scaffold(
+
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text(
+          getTranslated(context, 'search_screen')
+        ),
+      ),
+
       body: Column(
         children: [
           Container(
@@ -51,15 +63,15 @@ class _SearchScreenState extends State<SearchScreen>
                   SizedBox(height: 5.0),
                   Stack(
                     children: [
-                      GestureDetector(
-                        onTap:()
-                        {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                            Icons.arrow_back
-                        ),
-                      ),
+                      // GestureDetector(
+                      //   onTap:()
+                      //   {
+                      //     Navigator.pop(context);
+                      //   },
+                      //   child: Icon(
+                      //       Icons.arrow_back
+                      //   ),
+                      // ),
 
                       Center(
                         child: Text("Set Drop Off", style: TextStyle(fontSize: 18.0, fontFamily: "Brand Bold"),),
@@ -67,7 +79,7 @@ class _SearchScreenState extends State<SearchScreen>
                     ],
                   ),
 
-                  SizedBox(height: 16.0),
+                  SizedBox(height: 20.0),
                   Row(
                     children: [
                       Image.asset("images/pickicon.png", height: 16.0, width: 16.0,),

@@ -1,4 +1,6 @@
 {
+    "language": "Language",
+
     "login_screen": "Log-In Screen",
     "login_as_a_user": "LogIn as a User",
     "email": "Email",
@@ -17,6 +19,7 @@
 
 
     "main_screeen": "Main Screen",
+    "user_profile": "Profile",
     "log_out": "Log out",
     "hi_there": "Hi There",
     "where_to": "Where to?",

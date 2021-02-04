@@ -24,7 +24,9 @@ import 'package:my_flutter_project/Assistants/geoFireAssistant.dart';
 import 'package:my_flutter_project/DataHandler/appData.dart';
 import 'package:my_flutter_project/Models/directionDetails.dart';
 import 'package:my_flutter_project/Models/nearbyAvailableDrivers.dart';
+import 'package:my_flutter_project/classes/language.dart';
 import 'package:my_flutter_project/congifMaps.dart';
+import 'package:my_flutter_project/localization/language_constants.dart';
 import 'package:my_flutter_project/main.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -32,6 +34,8 @@ import 'package:url_launcher/url_launcher.dart';
 class MainScreen extends StatefulWidget
 {
   static const String idScreen = "mainScreen";
+  MainScreen({Key key}) : super(key: key);
+
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -39,6 +43,7 @@ class MainScreen extends StatefulWidget
 
 class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
 {
+
   Completer<GoogleMapController> _controllerGoogleMap = Completer();
   GoogleMapController newGoogleMapController;
 
@@ -349,6 +354,12 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
     uName = userCurrentInfo.name;
   }
 
+  void _changeLanguage(Language language) async {
+    Locale _locale = await setLocale(language.languageCode);
+    MyApp.setLocale(context, _locale);
+  }
+
+
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
@@ -359,9 +370,49 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
     createIconMarker();
     return Scaffold(
       key: scaffoldKey,
-      // appBar: AppBar(
-      //   title: Text('Main Screen'),
-      // ),
+
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text(
+          // "Log-in Screen"
+          getTranslated(context, 'main_screeen'),
+        ),
+
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DropdownButton<Language>(
+              underline: SizedBox(),
+              hint: Text(getTranslated(context, 'language'), style: TextStyle(color: Colors.white),), //"Language"
+              icon: Icon(
+                Icons.language,
+                color: Colors.white,
+              ),
+              onChanged: (Language language) {
+                _changeLanguage(language);
+              },
+              items: Language.languageList()
+                  .map<DropdownMenuItem<Language>>(
+                    (e) => DropdownMenuItem<Language>(
+                  value: e,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Text(
+                        e.flag,
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Text(e.name)
+                    ],
+                  ),
+                ),
+              )
+                  .toList(),
+            ),
+          ),
+        ],
+
+      ),
 
       //Navigation Drawer Menu
       drawer: Container(
@@ -406,16 +457,19 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
               //   title: Text("Visit Profile", style: TextStyle(fontSize: 15.0),),
               // ),
 
-              GestureDetector(
-                child: ListTile(
-                  onTap: ()
-                  {
-                    Navigator.pushNamedAndRemoveUntil(context, SettingsPage.idScreen, (route) => false);
-                  },
-                  leading: Icon(Icons.info),
-                  title: Text("Language", style: TextStyle(fontSize: 15.0),),
-                ),
-              ),
+              // GestureDetector(
+              //   child: ListTile(
+              //     onTap: ()
+              //     {
+              //       // Navigator.push(
+              //       //   context,
+              //       //   MaterialPageRoute(builder: (context) => SettingsPage()),
+              //       // );
+              //     },
+              //     leading: Icon(Icons.info),
+              //     title: Text("Language", style: TextStyle(fontSize: 15.0),),
+              //   ),
+              // ),
 
 
               GestureDetector(
@@ -426,7 +480,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                     Navigator.pushNamedAndRemoveUntil(context, LoginScreen.idScreen, (route) => false);
                   },
                   leading: Icon(Icons.info),
-                  title: Text("Log Out", style: TextStyle(fontSize: 15.0),),
+                  title: Text(getTranslated(context, 'log_out'), style: TextStyle(fontSize: 15.0),), //"Log Out"
                 ),
               ),
             ],
@@ -529,8 +583,12 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 6.0),
-                      Text("Hi there,", style: TextStyle(fontSize:  12.0),),
-                      Text("Where to?", style: TextStyle(fontSize:  20.0, fontFamily: "Brand Bold"),),
+
+                      // "Hi there,"
+                      Text(getTranslated(context, 'hi_there'), style: TextStyle(fontSize:  12.0),),
+
+                      // "Where to?"
+                      Text(getTranslated(context, 'where_to'), style: TextStyle(fontSize:  20.0, fontFamily: "Brand Bold"),),
 
                       SizedBox(height: 6.0),
                       GestureDetector(
@@ -562,7 +620,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                               children: [
                                 Icon(Icons.search, color: Colors.blueAccent,),
                                 SizedBox(width: 10.0,),
-                                Text("Search Drop Off"),
+                                Text(getTranslated(context, 'search_drop_off')), // "Search Drop Off"
                               ],
                             ),
                           ),
@@ -579,10 +637,10 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                               Text(
                                 Provider.of<AppData>(context).pickUpLocation != null
                                     ? Provider.of<AppData>(context).pickUpLocation.placeName
-                                    :"Add Home"
+                                    : getTranslated(context, 'add_home') //"Add Home"
                               ),
                               SizedBox(height: 4.0),
-                              Text("Your Home Address", style: TextStyle(color: Colors.black54, fontSize: 12.0),),
+                              Text(getTranslated(context, 'your_home_address'), style: TextStyle(color: Colors.black54, fontSize: 12.0),), // "Your Home Address"
                             ],
                           ),
                         ],
@@ -601,9 +659,9 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Add Work"),
+                              Text(getTranslated(context, 'add_work')), //"Add Work"
                               SizedBox(height: 4.0),
-                              Text("Your Office Address", style: TextStyle(color: Colors.black54, fontSize: 12.0),),
+                              Text(getTranslated(context, 'your_work_address'), style: TextStyle(color: Colors.black54, fontSize: 12.0),), //"Your Office Address"
                             ],
                           ),
                         ],
@@ -668,7 +726,8 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                                 Column(
                                   children: [
                                     Text(
-                                      "Auto1 (Male Driver)", style: TextStyle(fontSize: 18.0, fontFamily: "Brand Bold"),
+                                      //"Auto1 (Male Driver)"
+                                      getTranslated(context, 'male_driver'), style: TextStyle(fontSize: 18.0, fontFamily: "Brand Bold"),
                                     ),
                                     Text(
                                       ((tripDirectionDetails != null) ? tripDirectionDetails.distanceText : ''), style: TextStyle(fontSize: 16.0, color: Colors.grey,),
@@ -716,7 +775,8 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                                 Column(
                                   children: [
                                     Text(
-                                      "Auto2 (Female Driver)", style: TextStyle(fontSize: 18.0, fontFamily: "Brand Bold"),
+                                      //"Auto2 (Female Driver)"
+                                      getTranslated(context, 'female_driver'), style: TextStyle(fontSize: 18.0, fontFamily: "Brand Bold"),
                                     ),
                                     Text(
                                       ((tripDirectionDetails != null) ? tripDirectionDetails.distanceText : ''), style: TextStyle(fontSize: 16.0, color: Colors.grey,),
@@ -796,7 +856,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                           children: [
                             Icon(FontAwesomeIcons.moneyCheckAlt, size: 18.0, color: Colors.black54),
                             SizedBox(width: 16.0,),
-                            Text("Cash"),
+                            Text(getTranslated(context, 'cash')), //"Cash"
                             SizedBox(width: 6.0,),
                             Icon(Icons.keyboard_arrow_down, color: Colors.black54, size: 16.0,),
                           ],
@@ -869,13 +929,16 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                         print("Tap Event");
                       },
                       text: [
-                        "Requesting Ride",
-                        "Please wait...",
-                        "Finding a driver...",
+                        // "Requesting Ride",
+                        // "Please wait...",
+                        // "Finding a driver...",
+                        getTranslated(context, 'requesting_ride'),
+                        getTranslated(context, 'please_wait'),
+                        getTranslated(context, 'Finding a driver'),
                       ],
                       textStyle: TextStyle(
                         fontSize: 55.0,
-                        fontFamily: "Signatra"
+                        fontFamily: "Brand Bold"
                       ),
                       colors: [
                         Colors.green,
@@ -912,7 +975,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                     SizedBox(height: 10.0,),
                     Container(
                       width: double.infinity,
-                      child: Text("Cancel Ride", textAlign: TextAlign.center, style: TextStyle(fontSize: 12.0),),
+                      child: Text(getTranslated(context, 'cancel_ride'), textAlign: TextAlign.center, style: TextStyle(fontSize: 12.0),), //"Cancel Ride"
                     ),
 
                   ],
@@ -1042,7 +1105,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text("Call Driver", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),),
+                                  Text(getTranslated(context, 'call_driver'), style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),), //"Call Driver"
                                   Icon(Icons.call, color: Colors.white, size: 26.0,),
                                 ],
                               ),

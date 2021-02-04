@@ -7,7 +7,7 @@ const String LANGUAGE_CODE = 'languageCode';
 //languages code
 const String ENGLISH = 'en';
 const String HINDI = 'hi';
-const String MARATHI = 'hi';
+const String MARATHI = 'mr';
 
 Future<Locale> setLocale(String languageCode) async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
