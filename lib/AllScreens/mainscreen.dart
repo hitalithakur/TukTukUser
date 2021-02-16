@@ -10,7 +10,9 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_flutter_project/AllScreens/aboutScreen.dart';
 import 'package:my_flutter_project/AllScreens/loginScreen.dart';
+import 'package:my_flutter_project/AllScreens/profileScreen.dart';
 import 'package:my_flutter_project/AllScreens/ratingScreen.dart';
 import 'package:my_flutter_project/AllScreens/registerScreen.dart';
 import 'package:my_flutter_project/AllScreens/searchScreen.dart';
@@ -435,7 +437,15 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                         children: [
                           Text(uName, style: TextStyle(fontSize: 16.0, fontFamily: "Brand Bold"),),
                           SizedBox(height: 6.0,),
-                          Text("Profile"),
+                          GestureDetector(
+                            onTap: ()
+                            {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+                            },
+                            child: Text(
+                                "Visit Profile"
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -448,14 +458,30 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
               SizedBox(height: 12.0,),
 
               //Drawer Body Controllers
-              // ListTile(
-              //   leading: Icon(Icons.history),
-              //   title: Text("Ride History", style: TextStyle(fontSize: 15.0),),
-              // ),
-              // ListTile(
-              //   leading: Icon(Icons.person),
-              //   title: Text("Visit Profile", style: TextStyle(fontSize: 15.0),),
-              // ),
+              ListTile(
+                leading: Icon(Icons.history),
+                title: Text("Ride History", style: TextStyle(fontSize: 15.0),),
+              ),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: GestureDetector(
+                    onTap: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+                    },
+                    child: Text("Profile", style: TextStyle(fontSize: 15.0),)
+                ),
+              ),
+              GestureDetector(
+                onTap: ()
+                {
+                  Navigator.pushNamedAndRemoveUntil(context, AboutScreen.idScreen, (route) => false);
+                },
+                child: ListTile(
+                  leading: Icon(Icons.info),
+                  title: Text("About Us", style: TextStyle(fontSize: 15.0),),
+                ),
+              ),
 
               // GestureDetector(
               //   child: ListTile(
@@ -467,7 +493,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
               //       // );
               //     },
               //     leading: Icon(Icons.info),
-              //     title: Text("Language", style: TextStyle(fontSize: 15.0),),
+              //     title: Text("About Us", style: TextStyle(fontSize: 15.0),),
               //   ),
               // ),
 
@@ -479,7 +505,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                     FirebaseAuth.instance.signOut();
                     Navigator.pushNamedAndRemoveUntil(context, LoginScreen.idScreen, (route) => false);
                   },
-                  leading: Icon(Icons.info),
+                  leading: Icon(Icons.logout),
                   title: Text(getTranslated(context, 'log_out'), style: TextStyle(fontSize: 15.0),), //"Log Out"
                 ),
               ),

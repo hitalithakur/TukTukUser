@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:my_flutter_project/AllScreens/aboutScreen.dart';
 import 'package:my_flutter_project/AllScreens/loginScreen.dart';
 import 'package:my_flutter_project/AllScreens/mainscreen.dart';
 import 'package:my_flutter_project/AllScreens/registerScreen.dart';
@@ -99,6 +100,7 @@ class _MyAppState extends State<MyApp> {
           RegisterScreen.idScreen: (context) => RegisterScreen(),
           LoginScreen.idScreen: (context) => LoginScreen(),
           MainScreen.idScreen: (context) => MainScreen(),
+          AboutScreen.idScreen: (context) => AboutScreen(),
           //SettingsPage.idScreen: (context) => SettingsPage(),
         },
         debugShowCheckedModeBanner: false,
