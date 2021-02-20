@@ -10,6 +10,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_flutter_project/AllScreens/HistoryScreen.dart';
 import 'package:my_flutter_project/AllScreens/aboutScreen.dart';
 import 'package:my_flutter_project/AllScreens/loginScreen.dart';
 import 'package:my_flutter_project/AllScreens/profileScreen.dart';
@@ -354,6 +355,8 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
     initGeoFireListener();
 
     uName = userCurrentInfo.name;
+
+    AssistantMethods.retrieveHistInfo(context);
   }
 
   void _changeLanguage(Language language) async {
@@ -458,9 +461,15 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
               SizedBox(height: 12.0,),
 
               //Drawer Body Controllers
-              ListTile(
-                leading: Icon(Icons.history),
-                title: Text("Ride History", style: TextStyle(fontSize: 15.0),),
+              GestureDetector(
+                onTap: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryScreen()));
+                },
+                child: ListTile(
+                  leading: Icon(Icons.history),
+                  title: Text("Ride History", style: TextStyle(fontSize: 15.0),),
+                ),
               ),
               ListTile(
                 leading: Icon(Icons.person),

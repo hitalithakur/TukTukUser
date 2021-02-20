@@ -26,6 +26,8 @@ void main() async
 
 DatabaseReference usersRef = FirebaseDatabase.instance.reference().child("users");
 DatabaseReference driversRef = FirebaseDatabase.instance.reference().child("drivers");
+DatabaseReference newRequestRef = FirebaseDatabase.instance.reference().child("Ride Requests");
+
 
 class MyApp extends StatefulWidget {
 
