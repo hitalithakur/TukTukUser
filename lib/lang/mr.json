@@ -1,5 +1,6 @@
 {
     "language": "भाषा",
+    "go_back": "परत जा",
 
     "login_screen": "लॉग-इन स्क्रीन",
     "login_as_a_user": "वापरकर्ता म्हणून लॉग इन करा",
@@ -17,9 +18,14 @@
     "create_account": "खाते तयार करा",
     "already_have_an_account_login_here": "खाते आहे? येथे लॉग इन करा.",
 
-
     "main_screeen": "मुख्य स्क्रीन",
     "log_out": "बाहेर पडणे",
+    "user_profile": "प्रोफाइल",
+    "ride_history": "सहलीचा इतिहास",
+    "profile": "प्रोफाइल",
+    "about_us": "आमच्याबद्दल",
+    "app_language": "अनुप्रयोग भाषा",
+    "visit_profile": "प्रोफाइल भेट द्या",
     "hi_there": "नमस्कार",
     "where_to": "कुठे जायचे?",
     "search_drop_off": "गंतव्य शोधा",
@@ -48,5 +54,15 @@
     "good": "चांगले",
     "very_good": "खुप छान",
     "excellent": "उत्कृष्ट",
-    "submit": "प्रस्तुत करणे"
+    "submit": "प्रस्तुत करणे",
+
+    "about_screen": "माहिती स्क्रीन",
+    "about_text": "हे अॅप गौरंग, हिताली आणि शीतलेन यांनी विकसित केले आहे.",
+
+    "history_screen": "इतिहास स्क्रीन",
+    "trip_history": "सहलीचा इतिहास",
+
+    "profile_screen": "प्रोफाइल स्क्रीन",
+
+    "language_screen": "भाषा स्क्रीन"
 }

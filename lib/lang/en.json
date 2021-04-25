@@ -1,5 +1,6 @@
 {
     "language": "Language",
+    "go_back": "Go Back",
 
     "login_screen": "Log-In Screen",
     "login_as_a_user": "LogIn as a User",
@@ -17,10 +18,14 @@
     "create_account": "Create Account",
     "already_have_an_account_login_here": "Already have an account? Login here.",
 
-
     "main_screeen": "Main Screen",
     "user_profile": "Profile",
     "log_out": "Log out",
+    "ride_history": "Ride History",
+    "profile": "Profile",
+    "about_us": "About Us",
+    "app_language": "App Language",
+    "visit_profile": "Visit Profile",
     "hi_there": "Hi There",
     "where_to": "Where to?",
     "search_drop_off": "Search Drop off",
@@ -50,6 +55,14 @@
     "very_good": "Very Good",
     "excellent": "Excellent",
     "submit": "Submit",
-    "": "",
-    "": ""
+
+    "about_screen": "About Screen",
+    "about_text": "This app is developed by Gaurang, Hitali & Sheetal.",
+
+    "history_screen": "History Screen",
+    "trip_history": "Trip History",
+
+    "profile_screen": "Profile Screen",
+
+    "language_screen": "Language Screen"
 }

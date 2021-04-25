@@ -12,6 +12,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_flutter_project/AllScreens/HistoryScreen.dart';
 import 'package:my_flutter_project/AllScreens/aboutScreen.dart';
+import 'package:my_flutter_project/AllScreens/languageScreen.dart';
 import 'package:my_flutter_project/AllScreens/loginScreen.dart';
 import 'package:my_flutter_project/AllScreens/profileScreen.dart';
 import 'package:my_flutter_project/AllScreens/ratingScreen.dart';
@@ -446,7 +447,8 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                               Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
                             },
                             child: Text(
-                                "Visit Profile"
+                              //"Visit Profile"
+                              getTranslated(context, 'visit_profile')
                             ),
                           ),
                         ],
@@ -468,9 +470,10 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                 },
                 child: ListTile(
                   leading: Icon(Icons.history),
-                  title: Text("Ride History", style: TextStyle(fontSize: 15.0),),
+                  title: Text(getTranslated(context, 'ride_history'), style: TextStyle(fontSize: 15.0),), //"Ride History"
                 ),
               ),
+
               ListTile(
                 leading: Icon(Icons.person),
                 title: GestureDetector(
@@ -478,9 +481,10 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                     {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
                     },
-                    child: Text("Profile", style: TextStyle(fontSize: 15.0),)
+                    child: Text(getTranslated(context, 'profile'), style: TextStyle(fontSize: 15.0),) //"Profile"
                 ),
               ),
+
               GestureDetector(
                 onTap: ()
                 {
@@ -488,7 +492,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
                 },
                 child: ListTile(
                   leading: Icon(Icons.info),
-                  title: Text("About Us", style: TextStyle(fontSize: 15.0),),
+                  title: Text(getTranslated(context, 'about_us'), style: TextStyle(fontSize: 15.0),), //"About Us"
                 ),
               ),
 
@@ -496,13 +500,10 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin
               //   child: ListTile(
               //     onTap: ()
               //     {
-              //       // Navigator.push(
-              //       //   context,
-              //       //   MaterialPageRoute(builder: (context) => SettingsPage()),
-              //       // );
+              //       Navigator.push(context, MaterialPageRoute(builder: (context) => LanguageScreen()));
               //     },
               //     leading: Icon(Icons.info),
-              //     title: Text("About Us", style: TextStyle(fontSize: 15.0),),
+              //     title: Text(getTranslated(context, 'app_language'), style: TextStyle(fontSize: 15.0),), //"App Language"
               //   ),
               // ),
 

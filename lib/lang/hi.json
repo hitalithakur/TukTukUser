@@ -1,5 +1,6 @@
 {
     "language": "भाषा",
+    "go_back": "वापस जाओ",
 
     "login_screen": "प्रवेश पट",
     "login_as_a_user": "उपयोगकर्ता के रूप में लॉगिन करें",
@@ -17,9 +18,14 @@
     "create_account": "खाता बनाएं",
     "already_have_an_account_login_here": "खाता है? यहां लॉगिन करें।",
 
-
     "main_screeen": "मुख्य स्क्रीन",
     "log_out": "लॉग आउट",
+    "user_profile": "प्रोफाइल",
+    "ride_history": "यात्रा इतिहास",
+    "profile": "प्रोफाइल",
+    "about_us": "हमारे बारे में",
+    "app_language": "ऐप भाषा",
+    "visit_profile": "प्रोफ़ाइल पर जाएं",
     "hi_there": "नमस्ते",
     "where_to": "कहाँ जाना है?",
     "search_drop_off": "गंतव्य खोजें",
@@ -48,5 +54,15 @@
     "good": "अच्छा",
     "very_good": "बहुत अच्छा",
     "excellent": "अति उत्कृष्ट",
-    "submit": "प्रस्तुत करें"
+    "submit": "प्रस्तुत करें",
+
+    "about_screen": "जानकारी स्क्रीन",
+    "about_text": "यह ऐप गौरांग, हिताली और शीतल द्वारा विकसित किया गया है।",
+
+    "history_screen": "इतिहास स्क्रीन",
+    "trip_history": "यात्रा इतिहास",
+
+    "profile_screen": "प्रोफाइल स्क्रीन",
+
+    "language_screen": "भाषा स्क्रीन"
 }
